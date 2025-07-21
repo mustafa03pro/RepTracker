@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/landingcss.css">
+    <title>Landing Page</title>
+</head>
+<body>
+    <div class="left">
+        <div class="headi">
+            <img src="static/rx.jpeg" alt="Your Logo">
+            RepXplorer
+        </div>
+        
+        <div class="carousel">
+            <div class="carousal-cont">
+                <img src="static/b1.jpeg" alt="" class="slider">
+                <img src="static/b2.jpeg" alt="" class="slider">
+                <img src="static/b3.jpeg" alt="" class="slider">
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="letsstarted">
+            Get
+            Started! 
+        </div>
+ <div class="conta">
+    <div class="hover-trigger" id="bicep-curl-trigger">
+        <p>Bicep Curl</p>
+        <div class="form-container" id="bicep-curl-form">
+            <form action="{{ url_for('submit') }}" method="post">
+                <label for="bicep_curls">Number of Bicep Curls:</label>
+                <input type="text" name="bicep_curls" required>
+                <button type="submit" name="form_type" value="bicep_curl">Submit Bicep Curls</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="hover-trigger" id="squats-trigger">
+        <p>Squats</p>
+        <div class="form-container" id="squats-form">
+            <form action="{{ url_for('submit') }}" method="post">
+                <label for="squats">Number of Squats:</label>
+                <input type="text" name="squats" required>
+                <button type="submit" name="form_type" value="squats">Submit Squats</button>
+            </form>
+        </div>
+    </div>
+ </div>
+
+    </div>
+    <script>
+        // JavaScript for image carousel
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slider');
+        
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.style.display = i === index ? 'block' : 'none';
+            });
+        }
+        
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlide(currentIndex);
+        }
+        
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(currentIndex);
+        }
+        
+        // Initial display
+        showSlide(currentIndex);
+        
+        // Auto-advance every 3 seconds
+        setInterval(nextSlide, 3000);
+    </script>
+</body>
+</html>
